@@ -1,0 +1,5 @@
+{
+"gcp_proj_id": "proj1-2119",
+"gcp_source_image": "ubuntu-1604-lts",
+"gcp_m_type": "f1-micro"
+}

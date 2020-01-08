@@ -53,3 +53,9 @@ gcloud compute instances create reddit-app\
 gcloud compute firewall-rules create default-puma-server\
   --allow=tcp:9292 \
   --target-tags=puma-server 
+
+# Homework 05
+1. Created ubuntu 16.04 base image template for packer with variables and application for start Puma server
+2. Created immutable image on ubuntu 16.04 with all application and puma server for start with 1 command
+3. Created script for fast start puma server on GCP with image family reddit-full
+
