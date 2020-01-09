@@ -59,3 +59,14 @@ gcloud compute firewall-rules create default-puma-server\
 2. Created immutable image on ubuntu 16.04 with all application and puma server for start with 1 command
 3. Created script for fast start puma server on GCP with image family reddit-full
 
+# Homework 06
+1. Created virtual machine based on image family reddit-base via terraform template.
+2. Added on terraform template more users for ssh connection, firewall rule, installation and run all app puma server
+3. Added web user ssh key
+
+!!! For running terraform templaye you need to enter path for *.json file with credentials on GCP !!!
+
+For load balansing you need to download and install module `gce-lb-http`. TCP port for all servers you need to specify in file `terraform.tfvars`, for example read file `terraform.tfvars.example`.
+
+For launch infrastructure specify all parameters in file `terraform.tfvars`. 
+After that command `terraform plan` and `terraform apply`.
