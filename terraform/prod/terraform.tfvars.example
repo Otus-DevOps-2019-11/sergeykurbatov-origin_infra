@@ -1,9 +1,6 @@
 project          = "infra-259319"
 public_key_path  = "~/.ssh/appuser.pub"
-public_key_path1 = "~/.ssh/appuser1.pub"
-public_key_path2 = "~/.ssh/appuser2.pub"
-public_key_path3 = "~/.ssh/appuser3.pub"
 disk_image       = "reddit-base"
 private_key      = "~/.ssh/appuser"
 app_name         = "reddit-app"
-instance_count   = 1
+install_app      = true

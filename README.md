@@ -70,3 +70,20 @@ For load balansing you need to download and install module `gce-lb-http`. TCP po
 
 For launch infrastructure specify all parameters in file `terraform.tfvars`. 
 After that command `terraform plan` and `terraform apply`.
+
+# Homework 07
+1. Created modules configuration on terraform. Modules: `app`, `db`, `vpc`
+2. Created packer image for db and app vm
+3. Added Prod and stage build on terraform for more productivly work
+4. Added storage bucket module configuration
+5. Added on prod and stage build backend module for save terraform state file on early created storage bucket
+
+For work connection to database in module `app` created variable `db_ip` contained `google_compute_instance.db.network_interface.0.network_ip`
+
+For launch storage bucket command `terraform init terraform/`, `terraform plan terraform/` and `terraform apply terraform/`
+For launch prod infra command  `terraform init terraform/prod/`, `terraform plan terraform/prod/` and `terraform apply terraform/prod/`
+For launch stage infra command  `terraform init terraform/stage/`, `terraform plan terraform/stage/` and `terraform apply terraform/stage/`
+
+!!! For all servers you need to specify in file `terraform.tfvars`
+
+For connect to server puma enter `external_app_ip` and port `9292`
