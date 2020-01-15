@@ -1,0 +1,26 @@
+{
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "{{user `gcp_proj_id`}}",
+            "image_name": "reddit-app-{{timestamp}}",
+            "image_family": "reddit-app-base",
+            "source_image_family": "{{user `gcp_source_image`}}",
+            "zone": "europe-west1-b",
+            "ssh_username": "appuser",
+            "machine_type": "{{user `gcp_m_type`}}",
+            "image_description": "Reddit image for immutable infrastructure Ruby only",
+            "disk_type": "pd-standard",
+            "disk_size": "10",
+            "network": "default",
+            "tags": "reddit-app"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "scripts/install_ruby.sh",
+            "execute_command": "sudo {{.Path}}"
+        }
+    ]
+}
