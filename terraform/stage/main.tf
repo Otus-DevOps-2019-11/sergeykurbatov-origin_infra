@@ -25,3 +25,10 @@ module "vpc" {
   source          = "../modules/vpc"
   source_ranges = ["0.0.0.0/0"]
 }
+resource "template_file" "dynamic_inventory" {
+  template = file("dynamic_inventory.json")
+  vars = {
+    app_external_ip = "${module.app.app_external_ip}"
+    db_external_ip = "${module.db.db_external_ip}"
+  }
+}

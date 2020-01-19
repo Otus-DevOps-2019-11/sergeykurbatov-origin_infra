@@ -87,3 +87,12 @@ For launch stage infra command  `terraform init terraform/stage/`, `terraform pl
 !!! For all servers you need to specify in file `terraform.tfvars`
 
 For connect to server puma enter `external_app_ip` and port `9292`
+
+# Homework 08
+
+After first apply `ansible-playbook clone.yml` git clone repo, we delete it and retry apply `ansible-playbook clone.yml`. State changed, because we delete git repo dir and cloned another one and this directory before clone did not exist
+
+For test ansible inventory in json format use command `ansible all -i ansible/inventory.json -m ping`
+
+Ansible work with all of 3 inventory - *.json, *, *.yml. For configuration default file in `ansible.cfg` enter `inventory = ./inventory.json` for json format, or `inventory = ./inventory.yml` for yml format and other.
+
