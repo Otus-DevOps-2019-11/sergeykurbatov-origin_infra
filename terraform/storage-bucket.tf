@@ -7,14 +7,14 @@ provider "google" {
 module "storage-bucket-stage" {
   source  = "SweetOps/storage-bucket/google"
   version = "0.3.0"
-  name = "storage-bucket-stage"
+  name = "storage-bucket-stage-inf"
   location = var.region
   force_destroy = true
 }
 module "storage-bucket-prod" {
   source  = "SweetOps/storage-bucket/google"
   version = "0.3.0"
-  name = "storage-bucket-prod"
+  name = "storage-bucket-prod-inf"
   location = var.region
   force_destroy = true
 }
