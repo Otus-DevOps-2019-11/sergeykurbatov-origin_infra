@@ -124,3 +124,35 @@ In file `ansible/app.yml`, in section vars added:
    db_host: "{{ db_ip_int }}"
 ```
 - Upgraded packer image for work with ansible playbook. Now installation worked with ansible, image builded with ansible playbook provisioning
+
+# Homework 10
+For role run use command `ansible-galaxy init app`
+For run role add in playbook:
+```
+roles:
+- app
+```
+For run dynamic inventory and deploy some application or service use:
+```
+ansible-playbook -i environments/prod/dynamic_inventory.sh playbooks/site.yml
+```
+
+Added community role:
+```
+- src: jdauphant.nginx
+version: v2.21.1
+```
+And added this role in environments/prod/requirements.yml or environments/stage/requirements.yml
+Config:
+```
+nginx_sites:
+    default:
+        - listen 80
+        - server_name "reddit"
+        - location / { proxy_pass http://127.0.0.1:9292; }
+```
+Added ansible vault key in ansible.cfg, in section [default]- `vault_password_file = vault.key`
+After that added configuration about users in ansible/playbooks/users.yml
+Encrypted credentials added in ansible/environments/prod/credentials.yml or ansible/environments/stage/credentials.yml
+
+Edited file `.travis.yml` for test configurations about terraform and ansible 
