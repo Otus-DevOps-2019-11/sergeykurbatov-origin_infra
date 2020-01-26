@@ -1,0 +1,29 @@
+---
+- name: pre-install db for db server
+  hosts: all
+  become: true
+  tasks:
+    - name: Install python
+      apt:
+        name: python-apt
+        state: present
+    - name: Add an apt key by id from a keyserver
+      apt_key:
+        id: E52529D4
+        keyserver: keyserver.ubuntu.com
+    - name: add apt repo
+      apt_repository: 
+        repo: deb [ arch=amd64,arm64] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse
+        state: present
+    - name: Update packages
+      apt:
+        update_cache: yes
+    - name: Install ruby and bundler
+      apt: 
+        name: mongodb-org
+        state: present
+    - name: Enable mongodb service
+      systemd:
+        name: mongod
+        state: started
+        enabled: yes
