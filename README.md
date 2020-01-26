@@ -102,3 +102,25 @@ app_ip=`cd ../terraform/stage && terraform output | grep app_external_ip | awk '
 db_ip=`cd ../terraform/stage && terraform output | grep db_external_ip | awk '{print $3}'`
 ```
 For running dynamic inventory `chmod +x ansible/dynamic_inventory.sh`, after that `ansible all -m ping -i ansible/dynamic_inventory.sh` or `ansible all --list -i ansible/dynamic_inventory.sh`
+
+# Homework 09
+
+- Added single play ansible playbook - `ansible/reddit_app_one_play.yml`
+- Added Multiple play ansible playbook in single file - `ansible/reddit_multiple_play.yml`
+- Added moduleted ansible playbook:
+  - `ansible/site.yml` - main playbook included db.yml, app.yml, deploy.yml
+  - `ansible/db.yml` - mongodb provisioning
+  - `ansible/app.yml` - puma service provisioning
+  - `absible/deploy.yml` - install web site files
+- Added more var in dynamyc inventory script - db_int_ip
+For working with dynamic inventory modife file `ansible/dynamic_inventory.sh`. Script requested added 1 outputs from terraform:
+```
+db_ip_int=`cd ../terraform/stage && terraform output | grep db_ip | awk '{print $3}'`
+```
+For launch dynamic inventory script execute command `chmod +x ansible/dynamic_inventory.sh`, after launch command - `cd ansible && ansible-playbook site.yml`
+In file `ansible/app.yml`, in section vars added:
+```
+  vars:
+   db_host: "{{ db_ip_int }}"
+```
+- Upgraded packer image for work with ansible playbook. Now installation worked with ansible, image builded with ansible playbook provisioning

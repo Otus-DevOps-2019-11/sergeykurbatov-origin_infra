@@ -2,15 +2,19 @@
 
 app_ip=`cd ../terraform/stage && terraform output | grep app_external_ip | awk '{print $3}'`
 db_ip=`cd ../terraform/stage && terraform output | grep db_external_ip | awk '{print $3}'`
+db_ip_int=`cd ../terraform/stage && terraform output | grep db_ip | awk '{print $3}'`
 
 
 if [ "$1" == "--list" ] ; then
 cat<<EOF
 {
-    "apps": {
+    "app": {
         "hosts": [$app_ip],
+        "vars": {
+            "db_ip_int": "$db_ip_int"
+        }
     },
-    "dbs": {
+    "db": {
         "hosts": [$db_ip],
     }
 }
