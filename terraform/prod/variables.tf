@@ -17,18 +17,6 @@ variable public_key_path {
   # Описание переменной
   description = "Path to the public key used for ssh access"
 }
-variable public_key_path1 {
-  # Описание переменной
-  description = "Path to the public key used for ssh access"
-}
-variable public_key_path2 {
-  # Описание переменной
-  description = "Path to the public key used for ssh access"
-}
-variable public_key_path3 {
-  # Описание переменной
-  description = "Path to the public key used for ssh access"
-}
 variable private_key {
   description = "Path to the private key used for ssh access"
 }
