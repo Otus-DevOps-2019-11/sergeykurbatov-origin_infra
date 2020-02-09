@@ -156,3 +156,11 @@ After that added configuration about users in ansible/playbooks/users.yml
 Encrypted credentials added in ansible/environments/prod/credentials.yml or ansible/environments/stage/credentials.yml
 
 Edited file `.travis.yml` for test configurations about terraform and ansible 
+
+# Homework 11
+Installed and created `vagrantfile` for local test servers and applications.
+In  `vagrantfile` incerted ansible provision for autoinstall all dependencies. 
+Updated ansible roles and packer playbook for db and app servers.
+Instaled molecule for testing application.
+Updated molecule config for auto test application connection.
+DB ansible role add in `requirments.yml` for remote install.

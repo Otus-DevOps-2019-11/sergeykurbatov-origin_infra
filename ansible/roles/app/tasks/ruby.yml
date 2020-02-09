@@ -1,0 +1,13 @@
+---
+- name: Run the equivalent of "apt-get update"
+  apt:
+    update_cache: yes
+- name: Install ruby and bundler
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ruby-full
+    - ruby-bundler
+    - build-essential
+  tags: ruby
