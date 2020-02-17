@@ -10,6 +10,7 @@ install:
   - sudo pip install ansible-lint
   - wget https://releases.hashicorp.com/terraform/0.12.19/terraform_0.12.19_linux_amd64.zip -O /tmp/terraform.zip
   - sudo unzip -d /usr/local/bin/ /tmp/terraform.zip
+  - sudo pip install -r ansible/requirments.txt
 
 script:
   - packer validate -var-file=packer/variables.json.example packer/app.json
@@ -19,12 +20,17 @@ script:
   - cd terraform/prod && terraform init -backend=false && terraform validate && cd ..
   - cd stage && terraform init -backend=false && terraform validate && cd ..
   - ansible-lint ansible/playbooks
+  - ansible --version
+  - ansible-lint --version
+  - terraform --version
+  - packer --version
 
 
 branches:
   only:
   - master
   - ansible-3
+  - ansible-4
 
 notifications:
   slack:
